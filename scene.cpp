@@ -7,10 +7,13 @@ Scene::Scene(QObject *parent) : QGraphicsScene(), pos(0), step_count(0),
 
     this->view = new QGraphicsView;
     view->setMinimumSize(1024, 526);
+    view->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setScene(this);
-    setSceneRect(0,0, view->width(), view->height());
+    setSceneRect(- view->width() / 2, - view->height() / 2 , view->width(), view->height());
     step.append(0);
-
 }
 
 void Scene::set_color(QColor const color)
@@ -51,8 +54,10 @@ Scene::~Scene()
 
 }
 
+
 void Scene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+    setSceneRect(-view->width() / 2, - view->height() / 2 , view->width(), view->height());
     if(event->button() == Qt::LeftButton)
     {
         if (step_count < step.size() - 1)
