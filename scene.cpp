@@ -54,13 +54,11 @@ Scene::~Scene()
 
 }
 
-
 void Scene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    setSceneRect(-view->width() / 2, - view->height() / 2 , view->width(), view->height());
     if(event->button() == Qt::LeftButton)
     {
-        if (step_count < step.size() - 1)
+        if (step_count < step.size())
         {
             renew_buffer();
         }
@@ -70,6 +68,11 @@ void Scene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         {
             items.append(new Item(_start, event->scenePos(), _current_color, _size, _shape_flag));
             addItem(items.at(pos));
+        }
+        else
+        {
+            items.append(new Item(_start, event->scenePos(), _current_color, _size, _shape_flag));
+            addItem(items.at(pos++));
         }
         update();
     }

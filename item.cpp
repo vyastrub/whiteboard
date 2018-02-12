@@ -38,7 +38,14 @@ void Item::paint(QPainter *painter, const QStyleOptionGraphicsItem  *option, QWi
     }
     else if (_shape == 1)
     {
-        painter->drawLine(_start, _finish);
+        if (_start != _finish)
+        {
+            painter->drawLine(_start, _finish);
+        }
+        else
+        {
+            painter->drawPoint(_start);
+        }
     }
     else if (_shape == 2)
     {

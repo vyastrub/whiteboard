@@ -5,19 +5,18 @@
 #include "penbar.hpp"
 #include "midbar.hpp"
 
-class Form : public QMainWindow
+class Form : public QWidget
 {
     Q_OBJECT
 
 public:
     explicit Form(QWidget *parent = nullptr);
     ~Form();
-     QWidget & get_win() const;
      void connecting();
 
 private:
 
-    QWidget     *win;
+    void        resizeEvent(QResizeEvent *event);
     penBar      *pen_bar;
     midBar      *middle_bar;
     Scene       *scene;

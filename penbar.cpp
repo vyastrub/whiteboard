@@ -33,9 +33,13 @@ penBar::penBar(QWidget *parent) : QHBoxLayout()
     cur_col->setIconSize(QSize(40,40));
     spinBox->setMinimum(1);
     spinBox->setMaximum(10);
+    spinBox->setValue(1);
     slider->setFixedSize(150, 40);
     slider->setMinimum(1);
     slider->setMaximum(10);
+    slider->setSingleStep(1);
+    slider->setPageStep(1);
+    slider->setSliderPosition(1);
     grid_layout->setSpacing(0);
     setSpacing(5);
     addWidget(label1);

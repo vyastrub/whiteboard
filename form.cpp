@@ -1,18 +1,17 @@
 #include "form.hpp"
 
-Form::Form(QWidget *parent) : QMainWindow(parent)
+Form::Form(QWidget *parent) : QWidget(parent)
 {
-    this->win = new QWidget;
     this->pen_bar = new penBar;
     this->middle_bar = new midBar;
     this->scene = new Scene;
     this->vertical_layout = new QVBoxLayout;
-    vertical_layout->setSpacing(0);
-    win->setWindowTitle("whiteboard");
+    vertical_layout->setSpacing(5);
     vertical_layout->addLayout(pen_bar);
     vertical_layout->addLayout(middle_bar);
     vertical_layout->addWidget(scene->view);
-    win->setLayout(vertical_layout);
+    setWindowTitle("whiteboard");
+    setLayout(vertical_layout);
 }
 
 Form::~Form()
@@ -20,11 +19,6 @@ Form::~Form()
     delete pen_bar;
     delete middle_bar;
     delete scene;
-}
-
-QWidget & Form::get_win() const
-{
-    return *this->win;
 }
 
 void Form::connecting()
@@ -57,6 +51,11 @@ void Form::connecting()
             this, SLOT(enable_manager()));
 }
 
+void Form::resizeEvent(QResizeEvent *event)
+{
+    Q_UNUSED(event);
+    scene->setSceneRect(-scene->view->width() / 2, - scene->view->height() / 2 , scene->view->width(), scene->view->height());
+}
 
 void Form::change_color(int i)
 {
