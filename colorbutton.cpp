@@ -20,5 +20,5 @@ ColorButton::~ColorButton()
 
 QColor ColorButton::get_color() const
 {
-    return this->_color;
+    return _color;
 }
