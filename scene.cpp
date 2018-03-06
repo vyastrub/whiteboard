@@ -111,7 +111,7 @@ void Scene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         }
         step.append(pos);
         step_count++;
-        this->_pressed = false;
+        _pressed = false;
         update();
     }
 }
