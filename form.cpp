@@ -2,10 +2,10 @@
 
 Form::Form(QWidget *parent) : QWidget(parent)
 {
-    this->pen_bar = new penBar;
-    this->middle_bar = new midBar;
-    this->scene = new Scene;
-    this->vertical_layout = new QVBoxLayout;
+    pen_bar = new penBar;
+    middle_bar = new midBar;
+    scene = new Scene;
+    vertical_layout = new QVBoxLayout;
     vertical_layout->setSpacing(5);
     vertical_layout->addLayout(pen_bar);
     vertical_layout->addLayout(middle_bar);
