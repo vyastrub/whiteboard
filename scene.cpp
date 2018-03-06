@@ -5,7 +5,7 @@ Scene::Scene(QObject *parent) : QGraphicsScene(), pos(0), step_count(0),
 {
     Q_UNUSED(parent);
 
-    this->view = new QGraphicsView;
+    view = new QGraphicsView;
     view->setMinimumSize(1024, 526);
     view->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
@@ -18,17 +18,17 @@ Scene::Scene(QObject *parent) : QGraphicsScene(), pos(0), step_count(0),
 
 void Scene::set_color(QColor const color)
 {
-    this->_current_color = color;
+    _current_color = color;
 }
 
 void Scene::set_size(int const size)
 {
-    this->_size = size;
+    _size = size;
 }
 
 void Scene::set_shape(int const flag)
 {
-    this->_shape_flag = flag;
+    _shape_flag = flag;
 }
 
 void Scene::renew_buffer()
